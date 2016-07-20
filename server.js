@@ -54,6 +54,7 @@ apiRouter.get('/', function(req, res) {
 apiRouter.route('/jobs')
   .post(function(req, res) {
     var job = new Job();    // create a new instance of the job model
+    job.status = req.body.status;
     request(req.body.status, function (error, response, body) {
       if (!error && response.statusCode == 200) {
           job.status = body;
